@@ -21,16 +21,6 @@ height: auto;
 transition: all 2s ease;
 }
 
-.guy {
-display: block;
-width: 100%;
-max-width: 500px;
-border-radius: 18px;
-position: relative;
-z-index: 1;
-transition: transform 0.7s;
-}
-
 .dog {
 position: absolute;
 z-index: 2;
@@ -66,3 +56,54 @@ opacity: 1;
   pointer-events: none;
   z-index: 100;
 }
+.bear {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  opacity: 0;
+  transition: all 2s ease;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.bear {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 2s;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.bear-left {
+  left: -220px; /* спочатку поза екраном */
+}
+
+.bear-right {
+  right: -220px;
+}
+
+@keyframes dance-left {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(-10deg) translateX(10px); }
+  50% { transform: rotate(10deg) translateX(-10px); }
+  75% { transform: rotate(-10deg) translateX(5px); }
+}
+
+@keyframes dance-right {
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  25% { transform: rotate(10deg) translateX(-10px); }
+  50% { transform: rotate(-10deg) translateX(10px); }
+  75% { transform: rotate(10deg) translateX(-5px); }
+}
+
+.dancing-left {
+  animation: dance-left 1s infinite ease-in-out;
+}
+
+.dancing-right {
+  animation: dance-right 1s infinite ease-in-out;
+}
+
+

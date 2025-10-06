@@ -4,6 +4,9 @@ window.onload = function() {
   const dog = document.getElementById('dog');
   const container = document.querySelector('.container');
   const music = document.getElementById('music');
+  const bearLeft = document.getElementById('bearLeft');
+  const bearRight = document.getElementById('bearRight');
+  let bearsTimeout;
 
   let timer;
 
@@ -52,6 +55,27 @@ window.onload = function() {
     dog.style.left = `calc(50% - 150px)`;
     dog.style.top = `calc(50% - 150px)`;
     dog.style.width = '300px';
+    
+    if (bearsTimeout) clearTimeout(bearsTimeout);
+
+    // Через 1.5 секунди з’являється собака
+    timer = setTimeout(() => {
+      shock.style.opacity = '0';
+      dog.style.opacity = '1';
+      dog.style.filter = 'blur(0px)';
+
+      // Тепер ще через 15 секунд — з’являються ведмеді
+      bearsTimeout = setTimeout(() => {
+        bearLeft.style.opacity = '1';
+        bearRight.style.opacity = '1';
+        bearLeft.style.left = '-100px';
+        bearRight.style.right = '-100px';
+
+        // додаємо "танцювання"
+        bearLeft.classList.add('dancing-left');
+        bearRight.classList.add('dancing-right');
+      }, 18000);
+    }, 1800);
 
     // Запустити музику
     if (music) {
@@ -78,6 +102,13 @@ window.onload = function() {
     dog.style.left = `calc(50% - 150px)`;
     dog.style.top = `calc(50% - 150px)`;
     dog.style.width = '300px';
+
+    if (bearsTimeout) clearTimeout(bearsTimeout);
+    bearLeft.style.opacity = '0';
+    bearRight.style.opacity = '0';
+    bearLeft.classList.remove('dancing-left');
+    bearRight.classList.remove('dancing-right');
+
     if (music) {
       music.pause();
       music.currentTime = 0;
